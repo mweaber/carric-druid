@@ -1,0 +1,6 @@
+.body-container{
+    display: grid;
+    width: 75%;
+    height: auto;
+    border: solid, black, 2px;
+}
