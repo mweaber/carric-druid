@@ -3,6 +3,7 @@ import "./style.css";
 
 function Nav() {
     return (
+
         <div className ="nav-container">
             <div className="navbar">
                 <a className="newLink" href="/">
@@ -10,6 +11,7 @@ function Nav() {
                 </a>
             </div>
         </div>
+        
     );
 }
 

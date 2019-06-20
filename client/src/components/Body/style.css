@@ -2,5 +2,12 @@
     display: grid;
     width: 75%;
     height: auto;
-    border: solid, black, 2px;
+    border: solid black 2px;
+}
+
+.header{
+    border: solid black 1px;
+    text-decoration-color: brown;
+    width:100%;
+    height:auto;
 }
