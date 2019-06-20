@@ -1,15 +1,33 @@
-import React from "react";
+import React, {Component} from "react";
+import scrollToComponent from 'react-scroll-to-component';
 import "./style.css";
 
-function Body() {
-    return (
-        <div className ="body-container">
+      
+
+class Body extends React.Component {
+    
+            
+    constructor(props) {
+        super(props);
+        this.scrollToTopWithCallback = this.scrollToTopWithCallback.bind(this)
+      }
+
+    
+        scrollToTopWithCallback = () => {
+            let scroller = scrollToComponent(this.Trait, { offset: 0, align: 'top', duration: 1500});
+            scroller.on('end', () => console.log('Scrolling end!') );
+        };
+
+        render() {
+            return(
+                <div className ="body-container">
+
             <div className="heading">
                <h2>Welcome to my story!</h2>
-               <h4 className="intro-jump">Jump to: <a href="/">Intro</a></h4>
-               <h4 className="traits-jump">Jump to: <a href="/">My Character Traits</a></h4>
-               <h4 className="family-jump">Jump to: <a href="/">Family Tree</a></h4>
-               <h4 className="story-jump">Jump to: <a href="/">Adventures</a></h4>
+               <h4>Jump to: <a className="intro-jump" href="/">Intro</a></h4>
+               <h4>Jump to: <button className="traits-jump" onClick={() => scrollToComponent(this.Trait,{duration: 1500})}>My Character Traits</button></h4>
+               <h4>Jump to: <a className="family-jump" href="/">Family Tree</a></h4>
+               <h4>Jump to: <a className="story-jump" href="/">Adventures</a></h4>
 
             </div>
 
@@ -22,9 +40,9 @@ function Body() {
                 </p>
             </div>
 
-            <div className="traits">
+            <div className="traits" >
                 <h2 className="header">My Character Traits</h2>
-                <div className="traits-text">
+                <section className="traits-text" ref={(section) => {this.Trait = section;}}>
                     <button>My Traits</button>
                     <ul>
                         <li>Race: Wood Elf</li>
@@ -34,7 +52,7 @@ function Body() {
                         <li>Height: 5'6''</li>
                         <li>Weight: 110lbs</li>
                     </ul>
-                </div>
+                </section>
                 <div className="abilities-prof">
                     <button>Abilities & Proficienies</button>
                     <ul>
@@ -111,9 +129,13 @@ function Body() {
                 <p className="exploits-text">
                     I met with my current group of travellers and here is how you can read all about it.
                 </p>
-            </div>
+                </div>
         </div>
-    );
+        
+        );
+    }
+            
+    
 }
 
 export default Body;
