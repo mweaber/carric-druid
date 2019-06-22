@@ -22,12 +22,11 @@ class Body extends React.Component {
             return(
                 <div className ="body-container">
 
-            <div className="heading">
-               <h2>Welcome to my story!</h2>
-               <h4>Jump to: <a className="intro-jump" href="/">Intro</a></h4>
+            <div className="heading" ref={(div) => {this.Top = div}}>
+               <h2>Welcome!</h2>
                <h4>Jump to: <button className="traits-jump" onClick={() => scrollToComponent(this.Trait,{duration: 1500})}>My Character Traits</button></h4>
-               <h4>Jump to: <a className="family-jump" href="/">Family Tree</a></h4>
-               <h4>Jump to: <a className="story-jump" href="/">Adventures</a></h4>
+               <h4>Jump to: <button className="family-jump" onClick={() => scrollToComponent(this.Family, {duration:1500})}>Family Tree</button></h4>
+               <h4>Jump to: <button className="story-jump" onClick={() => scrollToComponent(this.Story, {duration:1500})}>My Adventures</button></h4>
 
             </div>
 
@@ -40,10 +39,10 @@ class Body extends React.Component {
                 </p>
             </div>
 
-            <div className="traits" >
+            <div className="traits" ref={(div) => {this.Trait = div}}>
                 <h2 className="header">My Character Traits</h2>
-                <section className="traits-text" ref={(section) => {this.Trait = section;}}>
-                    <button>My Traits</button>
+                <button onClick={() => scrollToComponent(this.Top, {duration:1500})}>Return</button>
+                <div className="traits-text">
                     <ul>
                         <li>Race: Wood Elf</li>
                         <li>Age: 72</li>
@@ -52,9 +51,9 @@ class Body extends React.Component {
                         <li>Height: 5'6''</li>
                         <li>Weight: 110lbs</li>
                     </ul>
-                </section>
+                </div>
                 <div className="abilities-prof">
-                    <button>Abilities & Proficienies</button>
+                    <h5>Abilities & Proficienies</h5>
                     <ul>
                         <li>Dark Vision</li>
                         <li>Fey Ancestry</li>
@@ -90,15 +89,16 @@ class Body extends React.Component {
                     </ul>
                 </div>
                 <div className="physical">
-                    <button>Physical Traits</button>
+                    <h5>Physical Traits</h5>
                     <p>I have grey/copper skin, gold eyes, black shoulder length hair,
                         and a small scar above my right eye. 
                     </p>
                 </div>
             </div>
 
-            <div className="family-tree">
+            <div className="family-tree" ref={(div) => {this.Family = div;}}>
                 <h2 className="header">My Family Tree:</h2>
+                <button onClick={() => scrollToComponent(this.Top, {duration:1500})}>Return</button>
                 <p className="family-tree-text">
                     I was born, I had a family, and now I have no one left but myself and my bond with nature.
                 </p>
@@ -124,8 +124,9 @@ class Body extends React.Component {
                 </p>
             </div>
 
-            <div className="exploits">
+            <div className="exploits" ref={(div) => {this.Story = div}}>
                 <h2 className="header">My Adventures</h2>
+                <button onClick={() => scrollToComponent(this.Top, {duration:1500})}>Return</button>
                 <p className="exploits-text">
                     I met with my current group of travellers and here is how you can read all about it.
                 </p>
