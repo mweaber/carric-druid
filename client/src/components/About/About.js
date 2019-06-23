@@ -5,7 +5,7 @@ import "./style.css";
 
       
 
-class Body extends React.Component {
+class About extends React.Component {
     
             
     constructor(props) {
@@ -143,4 +143,4 @@ class Body extends React.Component {
     
 }
 
-export default Body;
+export default About;

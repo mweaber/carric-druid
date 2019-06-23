@@ -1,10 +1,16 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
 import scrollToComponent from 'react-scroll-to-component';
+import API from "../../utils/API";
 import "./style.css";
 
 class Backpack extends React.Component {
 
+    state={
+        item:[],
+        title:"",
+        description:""
+    };
 
 
     constructor(props) {
@@ -16,6 +22,42 @@ class Backpack extends React.Component {
         scrollToTopWithCallback = () => {
             let scroller = scrollToComponent(this.Trait, { offset: 0, align: 'top', duration: 1500});
             scroller.on('end', () => console.log('Scrolling end!') );
+        };
+
+        handleInputChange = event => {
+            const {title, value} = event.target;
+            this.setState({
+                [title]: value
+            });
+        };
+
+        getItems = () => {
+            API.getItems(this.state.items)
+                .then(res => 
+                    this.setState({
+                        items: res.data
+                    })
+                )
+                .catch(() => 
+                    this.setState({
+                        items: [],
+                        message: "No Items found, please add one to begin"
+                    })
+                );
+        };
+
+        handleFormSubmit = event => {
+            event.preventDefault();
+            this.getItems();
+        };
+
+        handleSaveItem = id => {
+            const item = this.state.items.find(item => item.id === id);
+
+            API.saveItem({
+                title:item.title,
+                description:item.description
+            }).then(() => this.getItems());
         };
 
         // renderSelectedForm = event =>{
@@ -54,20 +96,21 @@ class Backpack extends React.Component {
                     <form>
                         <h5>Please enter an item:</h5>
                         <input
-                            value="{this.state.itemTitle}"
+                            value={this.state.itemTitle}
                             name="itemTitle"
-                            onChange="{this.handleInputChange"
+                            onChange={this.handleInputChange}
                             type="text"
                             placeholder="Please Enter Item Title"
                         />
                         <input
-                            value="{this.state.description}"
+                            value={this.state.itemDescription}
                             name="itemDescription"
-                            onChange="{this.handleInputChange"
+                            onChange={this.handleInputChange}
                             type="text"
                             placeholder="Please Enter Item Descrption"
                         />
-                        <button className="submitItem">Enter New Item</button>   
+                        <button onClick = { () => this.handleItemSave()} 
+                            className="submitItem" >Enter New Item</button>   
                     </form>
                    
                     {/* Entering New Weapon */} 
@@ -167,14 +210,7 @@ class Backpack extends React.Component {
                     {/* </form> */} 
 
 
-
-
-
-
-
-
-
-                </div>
+                {/* </div> */}
 
 
 

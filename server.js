@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
-// const routes = require("./routes");
-// const path = require("path");
+const routes = require("./routes");
+const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -14,17 +14,19 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
-// app.use(routes);
+app.use(routes);
 
 // Connect to the MongoDB
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/carricpage");
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/carricpage",
+  {
+    useCreateIndex:true,
+    useNewUrlParser:true
+  }
+);
 
 // Start the API server
-// app.listen(PORT, () => {
-//   console.log(`🌎 ==> API server now on port ${PORT}!`);
-// });
+app.listen(PORT, () => {
+  console.log(`🌎 ==> API server now on port ${PORT}!`);
+});
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/carricpage", {useNewUrlParser: true})
- .then(app.listen(PORT, () => {
-   console.log(`🌎 ==> API server now on port ${PORT}!`);
- }));
