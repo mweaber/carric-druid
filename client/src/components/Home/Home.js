@@ -1,15 +1,15 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
+import scrollToComponent from 'react-scroll-to-component';
 import "./style.css";
 
-class Backpack extends React.Component {
+class Home extends React.Component {
     
     render() {
         return(
             <div>
-                Welcome to my Inventory Page. I will be updating this page as I gather
-                new items and materials!
-                <Link to="/">← Back to Home</Link>
+                Welcome to the Carric Nailo Resource Page!
+                <Link to="/backpack">← Back to Backpack</Link>
                 <Link to="/aboutme">← Back to About Me</Link>
             </div>
         );
@@ -18,4 +18,4 @@ class Backpack extends React.Component {
 
 }
 
-export default Backpack; 
+export default Home; 

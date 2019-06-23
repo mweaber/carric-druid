@@ -5,9 +5,7 @@ function Nav() {
     return (
         <div className ="nav-container">
             <div className="navbar">
-
-
-
+                <div>Carric Nailo's Resource Page</div>
             </div>
                
         </div>
