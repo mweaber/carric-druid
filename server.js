@@ -17,13 +17,10 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the MongoDB
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/carricpage",
-  {
-    useCreateIndex:true,
-    useNewUrlParser:true
-  }
-);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/druid-carric", {useCreateIndex: true, useNewUrlParser: true})
+  .then(() => console.log('MongoDB Connected...'))
+  .catch(err => console.log(err));
+
 
 // Start the API server
 app.listen(PORT, () => {
