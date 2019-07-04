@@ -1,6 +1,18 @@
 # carric-druid
 Making an app to track my D&amp;D player
 
+Teachnologies used in this app:
+
+        - React
+        - MongoDB
+        - Node 
+        - Express 
+        - Passport
+        - BCrypt
+        - Google OAuth
+        - Scroller
+        - Pagination
+
 When completed this app will: 
 
     Allow user to login and logout using passport/bcrypt
